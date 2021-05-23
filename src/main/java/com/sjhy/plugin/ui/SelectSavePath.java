@@ -93,6 +93,10 @@ public class SelectSavePath extends JDialog {
      */
     private JComboBox<String> groupComboBox;
     /**
+     * 子模块
+     */
+    private JTextField moduleNameField;
+    /**
      * 所有模板复选框
      */
     private List<JCheckBox> checkBoxList = new ArrayList<>();
@@ -221,6 +225,7 @@ public class SelectSavePath extends JDialog {
         tableInfo.setSavePath(savePath);
         tableInfo.setSavePackageName(packageField.getText());
         tableInfo.setPreName(preField.getText());
+        tableInfo.setModuleName(moduleNameField.getText());
         tableInfo.setTemplateGroupName((String) groupComboBox.getSelectedItem());
         Module module = getSelectModule();
         if (module != null) {
@@ -351,6 +356,9 @@ public class SelectSavePath extends JDialog {
         }
         if (!StringUtils.isEmpty(tableInfo.getPreName())) {
             preField.setText(tableInfo.getPreName());
+        }
+        if (!StringUtils.isEmpty(tableInfo.getModuleName())) {
+            moduleNameField.setText(tableInfo.getModuleName());
         }
         Settings settings = Settings.getInstance();
         String groupName = settings.getCurrTemplateGroupName();
